@@ -6,11 +6,11 @@
 #include <WiFiClient.h>
 #include <BlynkSimpleEsp32.h>
 
-/*-------- Configurações ----------- */
+/*-------- Configurações ----------- */  
 #define DHTTYPE DHT11     // define o tipo do DHT
 #define DHTPIN  23        // ESP32 pin GIOP23 connected to DHT11 sensor's DATA pin
-#define LDR1_PIN 18       // ESP32 pin GIOP15 (ADC2_1)
-#define LDR2_PIN 4        // ESP32 pin GIOP4 (ADC2_0)
+#define TCRT1_PIN 4       // ESP32 pin GIOP4 (ADC2_1)
+#define TCRT2_PIN 18      // ESP32 pin GIOP18 (ADC2_0)
 #define RELAY_PIN 19      // ESP32 pin GIOP19
 #define SCREEN_WIDTH 128  // OLED display width, in pixels
 #define SCREEN_HEIGHT 64  // OLED display height, in pixels
@@ -21,20 +21,17 @@ char auth[] = "G2U5QNcQP7bSBMxRQa9pyhPybejZEaXS";
 char ssid[] = "connect-izaias";
 char password[] = "244466666"; 
 
-const int LDR_Min = 2000;
-bool LDR1 = LOW;
-bool LDR2 = LOW;
-int NumeroPessoas = 0; //Número de pessoas na sala
-
 /*-------- Handle das tasks ----------- */
-TaskHandle_t SensorPessoas;     // Task handle da função que conta o numero de pessoas
-TaskHandle_t Sensor_DHT11;      // Task handle da função de aquisição do DHT11
-float Temp;                     // Variável para armazenar Temperatura em Celsius
-float Humidity;                 // Variável para armazenar a humidade em %
-float HITemp;                   // Variável para armazenar a sensação térmica em Celcius
+TaskHandle_t SensorPessoas;     // task handle da função que conta o numero de pessoas
+TaskHandle_t Sensor_DHT11;      // task handle da função de aquisição do DHT11
+float Temp;                     // variável para armazenar Temperatura em Celsius
+float Humidity;                 // variável para armazenar a humidade em %
+float HITemp;                   // variável para armazenar a sensação térmica em Celcius
 
-DHT dht(DHTPIN, DHTTYPE);
-Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1); // Declaration for an SSD1306 display connected to I2C (SDA, SCL pins)
+int NumeroPessoas = 0;          // número de pessoas na sala
+
+DHT dht(DHTPIN, DHTTYPE);       // declaração do DHT conectado no pino DHTPIN, do tipo DHTTYPE 
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1); // Declaração de um display SSD1306 conectado a I2C (SDA, SCL pins)
 
 // This function creates the timer object. It's part of Blynk library 
 BlynkTimer timer;
@@ -42,7 +39,7 @@ void myTimer()
 {
   // This function describes what will happen with each timer tick
   // timer é criado para impedir que aconteça uma sobrecarga no servidor
-  Blynk.virtualWrite(V0,Temp);
+  Blynk.virtualWrite(V0,Temp);      // variável Temp é alocada na variável virtual V0
   Blynk.virtualWrite(V1,Humidity);
   Blynk.virtualWrite(V4,HITemp);
   Blynk.virtualWrite(V3,NumeroPessoas);
@@ -50,22 +47,23 @@ void myTimer()
 
 void setup() 
 {
-  Serial.begin(9600); // initialize serial
-  Blynk.begin(auth, ssid, password);
-  timer.setInterval(1000L, myTimer); 
-
-  dht.begin();                           // initialize the DS18B20 sensor
-  display.begin(SSD1306_SWITCHCAPVCC, 0x3C); // initialize OLED display with I2C address 0x3C
+  Serial.begin(115200);                         // Inicializa monitor serial
+  Blynk.begin(auth, ssid, password);            // Inicializa o Blynk
+  timer.setInterval(1000L, myTimer);            // Inicializa o Timer do blynk para enviar os dados para o APP
+  dht.begin();                                  // Inicializa o DHT111
+  display.begin(SSD1306_SWITCHCAPVCC, 0x3C);    // Inicializa Display OLED com endereço I2C 0x3C
   display.clearDisplay();
   display.setTextColor(WHITE);
 
-  pinMode(RELAY_PIN, OUTPUT);  //Define o Pino como saída
+  pinMode(TCRT1_PIN, INPUT);    //definindo o pino do sensor como entrada
+  pinMode(TCRT2_PIN, INPUT);    //definindo o pino do sensor como entrada
+  pinMode(RELAY_PIN, OUTPUT);   //Define o Pino como saída
   digitalWrite(RELAY_PIN, LOW); //LED INICIA DESLIGADO
 
   xTaskCreatePinnedToCore(
       SensorDHT11,        /* Function to implement the task */
       "Task1",            /* Name of the task */
-      10000,               /* Stack size in words */
+      10000,              /* Stack size in words */
       NULL,               /* Task input parameter */
       0,                  /* Priority of the task */
       &Sensor_DHT11,      /* Task handle. */
@@ -88,32 +86,29 @@ void SensorNumeroTask(void * parameter)
 {
   for(;;) 
   {
-    if(analogRead(LDR1_PIN) < LDR_Min && analogRead(LDR2_PIN) > LDR_Min && LDR1 == LOW && LDR2 == LOW)
-      LDR1 = HIGH;
-    if(analogRead(LDR1_PIN) > LDR_Min && analogRead(LDR2_PIN) < LDR_Min && LDR1 == HIGH && LDR2 == LOW)
-      {
-        while(analogRead(LDR2_PIN)<LDR_Min)
-        { }
-          NumeroPessoas++;
-          Serial.print("Pesosas na sala: ");
-          Serial.println(NumeroPessoas);
-          LDR1 = LOW;
-          LDR2 = LOW;
-      }
-    if(analogRead(LDR1_PIN) > LDR_Min && analogRead(LDR2_PIN) < LDR_Min && LDR1 == LOW && LDR2 == LOW)
-      LDR2 = HIGH;
-    if(analogRead(LDR1_PIN) < LDR_Min && analogRead(LDR2_PIN) > LDR_Min && LDR1 == LOW && LDR2 == HIGH)
-      {
-        while(analogRead(LDR1_PIN) < LDR_Min)
-        { }
-          NumeroPessoas=NumeroPessoas>0?NumeroPessoas-1:0;//Compara se é maior que 0, se sim, diminui o valor, se não iguala a 0
-          Serial.print("Pesosas na sala: ");
-          Serial.println(NumeroPessoas);
-          LDR2 = LOW;
-          LDR1 = LOW;
-      }
-    Serial.println(analogRead(LDR1_PIN));
-    Serial.println(analogRead(LDR2_PIN));
+    // Verifica se sensor 1 está coberto
+    if(digitalRead(TCRT1_PIN) == 0)
+    {
+      while(digitalRead(TCRT1_PIN) == 0); // Entra em loop até sensor 1 ser descoberto
+        delay(100); //We can put the delay here to avoid people doesn't cover the sensor2 right-after sensor 1 is uncovered
+        if(digitalRead(TCRT2_PIN) == 0)   // Se o sensor 2 for coberto logo depois que o sensor 1 é descoberto
+        {
+          while(digitalRead(TCRT2_PIN)==0); // Entra em loop até sensor 2 ser descoberto
+            NumeroPessoas++;                // Incrementa numero de pessoas
+        }
+    }
+    // Decrease also like that
+    else if (digitalRead(TCRT2_PIN) == 0)
+    {
+      while(digitalRead(TCRT2_PIN) == 0);
+        delay(100);
+        if(digitalRead(TCRT1_PIN) == 0)
+        {
+          while(digitalRead(TCRT1_PIN)==0);
+            if(NumeroPessoas != 0) //Número de pessoa tem que ser > 0
+              NumeroPessoas--;     //Decrementa numero de pessoas
+        }
+    }
   }
 }
 
@@ -133,12 +128,12 @@ BLYNK_WRITE(V2) // Executes when the value of virtual pin 2 changes
 {
   if(param.asInt() == 1)
   {
-    // execute this code if the switch widget is now ON
+    // executa o codigo se o widget do botão no APP é pressionado (ON) 
     digitalWrite(RELAY_PIN,HIGH);  // Set digital pin 19 HIGH
   }
   else
   {
-    // execute this code if the switch widget is now OFF
+    // executa o codigo se o widget do botão no APP é desligado (OFF) 
     digitalWrite(RELAY_PIN,LOW);  // Set digital pin 19 LOW 
   }
 }
@@ -151,27 +146,27 @@ void loop()
   timer.run(); 
 
   /*-------- Exibe os valores no Display OLED ----------- */
-  display.clearDisplay();              // clear display
+  display.clearDisplay();               // clear display
   //exibir sensação térmica
   display.setTextSize(1);               // set text size
-  display.setCursor(0,0);              // set position to display
-  display.print("Sensacao Térmica "); // set text
+  display.setCursor(0,0);               // set position to display
+  display.print("Sensacao Térmica ");   // set text
   display.setTextSize(2);
   display.setCursor(0,10);
   display.print(HITemp);
   display.print(" ");
   display.setTextSize(1);
-  display.cp437(true);            // Escrever o símbolo º 
+  display.cp437(true);                  // Escrever o símbolo º 
   display.write(167);
   display.setTextSize(2);
   display.print("C");
   //exibir número de pessoas
-  display.setTextSize(1);         // set text size
-  display.setCursor(0,32);         // set position to display
-  display.print("Numero de pessoas:"); // set text
+  display.setTextSize(1);               // set text size
+  display.setCursor(0,32);              // set position to display
+  display.print("Numero de pessoas:");  // set text
   display.setTextSize(2);
   display.setCursor(0,42);
   display.print(NumeroPessoas);
-  display.display();              // display on OLED
+  display.display();                    // display on OLED
   delay(100);
 }
