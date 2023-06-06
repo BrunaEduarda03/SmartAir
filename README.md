@@ -22,6 +22,8 @@ O SmartAir é um sistema IoT de gerenciamento de ambientes, que permite controla
 * Jumpers;
 * Protoboard;
 
+
+
 ## 🛠️ Como instalar
 
 **Clonar este repositório**
@@ -40,7 +42,7 @@ Insira sua rede wifi no código
 #define PASSWD senha_do_wifi 
 ```
 
-## Arquitetura
+## :technologist: Arquitetura   
 
 ### Esquemático :bar_chart:
 <h1>
@@ -52,12 +54,12 @@ Insira sua rede wifi no código
 <img alt="smartAir" src="https://github.com/BrunaEduarda03/SmartAir/assets/73250271/8c0a19e1-ce4e-4180-b771-27e887fce724" width="800px" align="center" />
 </h1> 
 
-### Inteface Gráfica - Blynk
+### Inteface Gráfica - Blynk 📶:
 #### Aplicativo :iphone:
 <h1>
 <img alt="smartAir" src="https://github.com/BrunaEduarda03/SmartAir/assets/73250271/57144797-1da3-47ce-82af-8434ccef1940" width="800px" align="center" />
 </h1> 
-#### Navegador :technologist:
+#### Navegador 🖥️:
 <h1>
 <img alt="smartAir" src="https://github.com/BrunaEduarda03/SmartAir/assets/73250271/cacc5cd9-40f2-448c-a1cd-127545383daf" width="800px" align="center" />
 </h1> 
