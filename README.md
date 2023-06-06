@@ -34,7 +34,7 @@ git clone git@github.com:BrunaEduarda03/SmartAir.git
 
 
 * Baixe e instale o Esp32 no ambiente de desenvolvimento do Arduino ou baixe o VsCode e instale a extensão plataformIO.
-* o Esp32Instale as bibliotecas da pasta lib no seu arquivo local de bibliotecas
+* Instale o nodeMCU com a IDE e Instale as bibliotecas da pasta lib no seu arquivo local de bibliotecas.
 
 Insira sua rede wifi no código
 ```
