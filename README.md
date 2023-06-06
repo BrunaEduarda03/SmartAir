@@ -64,6 +64,11 @@ Navegador 🖥️
 <img alt="smartAir" src="https://github.com/BrunaEduarda03/SmartAir/assets/73250271/cacc5cd9-40f2-448c-a1cd-127545383daf" width="800px" align="center" />
 </h1> 
 
-## Demo :technologist:
+## :technologist: Demo 
+
+## :speaking_head: Nos dê feedbacks sobre o projeto!
+E-mail: [**brunaduda37@gmail.com**](mailto:brunaduda37@gmail.com)
+
+Linkedin: [Bruna Eduarda](https://www.linkedin.com/in/bruna-eduarda-a06a1b18b/)
 
 
