@@ -1,4 +1,5 @@
 # SmartAir :iphone:
+Seu assistente para climatização personalizada.
 
 ## Sobre  :speech_balloon:
 O SmartAir é um sistema IoT de gerenciamento de ambientes, que permite controlar e monitorar aparelhos de ar-condicionado de forma remota, otimozando o consumo de energia. Com o auxílio de um aplicativo, é possível visualizar os dados em tempo real, além de propocionar conforto e praticidade aos usuários.
