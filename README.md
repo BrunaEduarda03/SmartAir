@@ -1,16 +1,16 @@
 # SmartAir :iphone:
 Seu assistente para climatização personalizada.
 
-## Sobre  :speech_balloon:
+## :speech_balloon: Sobre  
 O SmartAir é um sistema IoT de gerenciamento de ambientes, que permite controlar e monitorar aparelhos de ar-condicionado de forma remota, otimozando o consumo de energia. Com o auxílio de um aplicativo, é possível visualizar os dados em tempo real, além de propocionar conforto e praticidade aos usuários.
 
-## Objetivos Especificos :memo:
+## :memo: Objetivos Especificos 
 * Controlar as funcionalidades do ar-condicionado, tais como, ligar/desligar, aumentar/diminuir temperatura;
 * Realizar controle manual através de dispositivo instalado no ambiente ou via servidor web através de rede Wifi;
 * Compartilhar informações de Status do ar-condicionado via servidor web;
 * Otimizar o consumo de energia elétrica dos aparelhos de ar-condicionado, visando reduzir os custos e diminuir o impacto ambiental.
 
-## Materiais utilizados :card_index_dividers:
+## :card_index_dividers: Materiais utilizados 
 
 * Microcontrolador ESP32;
 * Sensor de temperatura DHT11;
@@ -43,7 +43,7 @@ Insira sua rede wifi no código
 #define PASSWD senha_do_wifi 
 ```
 
-## 🗃️: Arquitetura   
+## 🗃️ Arquitetura   
 
 ### Esquemático :bar_chart:
 <h1>
@@ -55,7 +55,7 @@ Insira sua rede wifi no código
 <img alt="smartAir" src="https://github.com/BrunaEduarda03/SmartAir/assets/73250271/0aac75bf-3616-47ba-ab8a-0e5eb851a117" width="800px" align="center" />
 </h1> 
 
-### Inteface Gráfica - Blynk 📶
+### 📶 Inteface Gráfica - Blynk 
 Aplicativo :iphone:
 <h1>
 <img alt="smartAir" src="https://github.com/BrunaEduarda03/SmartAir/assets/73250271/57144797-1da3-47ce-82af-8434ccef1940" width="800px" align="center" />
