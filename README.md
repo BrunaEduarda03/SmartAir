@@ -52,7 +52,7 @@ Insira sua rede wifi no código
 
 ### Montagem do Circuito :zap:
 <h1>
-<img alt="smartAir" src="https://github.com/BrunaEduarda03/SmartAir/assets/73250271/8c0a19e1-ce4e-4180-b771-27e887fce724" width="800px" align="center" />
+<img alt="smartAir" src="https://github.com/BrunaEduarda03/SmartAir/assets/73250271/0aac75bf-3616-47ba-ab8a-0e5eb851a117" width="800px" align="center" />
 </h1> 
 
 ### Inteface Gráfica - Blynk 📶
