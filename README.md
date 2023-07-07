@@ -55,7 +55,7 @@ Insira sua rede wifi no código
 <img alt="smartAir" src="https://github.com/BrunaEduarda03/SmartAir/assets/73250271/0aac75bf-3616-47ba-ab8a-0e5eb851a117" width="800px" align="center" />
 </h1> 
 
-### 📶 Inteface Gráfica - Blynk 
+### 📶 Inteface Gráfica 
 Aplicativo :iphone:
 <h1>
 <img alt="smartAir" src="https://github.com/BrunaEduarda03/SmartAir/assets/73250271/57144797-1da3-47ce-82af-8434ccef1940" width="800px" align="center" />
