@@ -67,6 +67,8 @@ Navegador 🖥️
 
 ## :technologist: Demo 
 
+https://github.com/BrunaEduarda03/SmartAir/assets/73250271/d5100913-022e-424e-9b7b-e9a12c8bc001
+
 ## :speaking_head: Nos dê feedbacks sobre o projeto!
 E-mail: [**brunaduda37@gmail.com**](mailto:brunaduda37@gmail.com)
 
