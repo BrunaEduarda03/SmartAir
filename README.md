@@ -55,15 +55,39 @@ Insira sua rede wifi no código
 <img alt="smartAir" src="https://github.com/BrunaEduarda03/SmartAir/assets/73250271/0aac75bf-3616-47ba-ab8a-0e5eb851a117" width="800px" align="center" />
 </h1> 
 
+
 ### 📶 Inteface Gráfica 
 Aplicativo :iphone:
-<h1>
-<img alt="smartAir" src="https://github.com/BrunaEduarda03/SmartAir/assets/73250271/57144797-1da3-47ce-82af-8434ccef1940" width="800px" align="center" />
-</h1> 
-Navegador 🖥️
-<h1>
-<img alt="smartAir" src="https://github.com/BrunaEduarda03/SmartAir/assets/73250271/cacc5cd9-40f2-448c-a1cd-127545383daf" width="800px" align="center" />
-</h1> 
+
+SplashScreen
+
+![image](https://github.com/user-attachments/assets/040a37f4-e112-4cd7-94d9-093a08eef0f3)
+
+Onboarding
+
+![image](https://github.com/user-attachments/assets/0d0b2694-d7eb-4b0a-8b59-c572ddd396ce)
+
+Auntenticação
+
+![image](https://github.com/user-attachments/assets/c56cf4cc-9721-4725-be93-560aab5d7e23)
+
+Home
+
+![image](https://github.com/user-attachments/assets/0d754d15-4b6f-4461-88a0-a0b77729786c)
+
+Dispositivo: Ar-condicionado
+
+![image](https://github.com/user-attachments/assets/a5681bfa-a7d2-4cf8-8dfa-31636fbc9cda)
+
+Menu
+
+![image](https://github.com/user-attachments/assets/a553c2ec-7f6e-4422-9666-e11f63f6e5fd)
+
+Configurações de Rede
+
+![image](https://github.com/user-attachments/assets/f6ac5ea6-6ead-4100-9599-469b2175ec2a)
+
+
 
 ## :technologist: Demo 
 
