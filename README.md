@@ -1,4 +1,4 @@
-# SmartAir :iphone:
+# EconoWize :iphone:
 Seu assistente para climatização personalizada.
 
 ## :speech_balloon: Sobre  
