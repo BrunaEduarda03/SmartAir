@@ -24,6 +24,28 @@ O SmartAir é um sistema IoT de gerenciamento de ambientes, que permite controla
 * Protoboard;
 
 
+## 📱 Desenvolvimento do app
+
+O aplicativo mobile do SmartAir foi totalmente desenvolvido em React Native, garantindo performance, fluidez e compatibilidade com dispositivos Android e iOS.
+A interface foi planejada para ser intuitiva, moderna e prática, permitindo que o usuário controle o ambiente com poucos toques.
+
+🧰 Tecnologias utilizadas no aplicativo
+
+React Native
+
+CLI
+
+TypeScript
+
+React Navigation
+
+Axios
+
+Context API / Async Storage para gerenciamento de estado e persistência
+
+API REST integrada ao ESP32 para comandos e monitoramento em tempo real
+
+
 
 ## 🛠️ Como instalar
 
